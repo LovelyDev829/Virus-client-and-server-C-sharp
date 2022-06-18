@@ -16,6 +16,7 @@ namespace resource
         const int SW_SHOW = 5;
         static void Main(string[] args)
         {
+            
             var handle = GetConsoleWindow();
             // Hide
             ShowWindow(handle, SW_HIDE);
