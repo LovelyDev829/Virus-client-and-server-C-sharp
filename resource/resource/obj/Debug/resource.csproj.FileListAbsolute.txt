@@ -1,0 +1,10 @@
+E:\Net_WorKing\ProjectS\Virus\resource\resource\bin\Debug\resource.exe.config
+E:\Net_WorKing\ProjectS\Virus\resource\resource\bin\Debug\resource.exe
+E:\Net_WorKing\ProjectS\Virus\resource\resource\bin\Debug\resource.pdb
+E:\Net_WorKing\ProjectS\Virus\resource\resource\bin\Debug\Topshelf.dll
+E:\Net_WorKing\ProjectS\Virus\resource\resource\bin\Debug\Topshelf.xml
+E:\Net_WorKing\ProjectS\Virus\resource\resource\obj\Debug\resource.csprojAssemblyReference.cache
+E:\Net_WorKing\ProjectS\Virus\resource\resource\obj\Debug\resource.csproj.CoreCompileInputs.cache
+E:\Net_WorKing\ProjectS\Virus\resource\resource\obj\Debug\resource.csproj.CopyComplete
+E:\Net_WorKing\ProjectS\Virus\resource\resource\obj\Debug\resource.exe
+E:\Net_WorKing\ProjectS\Virus\resource\resource\obj\Debug\resource.pdb

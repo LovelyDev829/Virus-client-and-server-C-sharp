@@ -1,0 +1,7 @@
+E:\Net_WorKing\ProjectS\Virus\Server\Server\bin\Debug\Server.exe.config
+E:\Net_WorKing\ProjectS\Virus\Server\Server\bin\Debug\Server.exe
+E:\Net_WorKing\ProjectS\Virus\Server\Server\bin\Debug\Server.pdb
+E:\Net_WorKing\ProjectS\Virus\Server\Server\obj\Debug\Server.csprojAssemblyReference.cache
+E:\Net_WorKing\ProjectS\Virus\Server\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
+E:\Net_WorKing\ProjectS\Virus\Server\Server\obj\Debug\Server.exe
+E:\Net_WorKing\ProjectS\Virus\Server\Server\obj\Debug\Server.pdb
