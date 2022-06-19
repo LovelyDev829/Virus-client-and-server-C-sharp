@@ -5,3 +5,6 @@ E:\Net_WorKing\ProjectS\Virus\Server\Server\obj\Debug\Server.csprojAssemblyRefer
 E:\Net_WorKing\ProjectS\Virus\Server\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
 E:\Net_WorKing\ProjectS\Virus\Server\Server\obj\Debug\Server.exe
 E:\Net_WorKing\ProjectS\Virus\Server\Server\obj\Debug\Server.pdb
+E:\Net_WorKing\ProjectS\Virus\Server\Server\bin\Debug\Newtonsoft.Json.dll
+E:\Net_WorKing\ProjectS\Virus\Server\Server\bin\Debug\Newtonsoft.Json.xml
+E:\Net_WorKing\ProjectS\Virus\Server\Server\obj\Debug\Server.csproj.CopyComplete

