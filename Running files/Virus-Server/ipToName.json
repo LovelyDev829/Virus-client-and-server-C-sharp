@@ -1,8 +1,9 @@
 [
-	{"ip" : "10.10.10.241",	"enable": true , "name" : "Lovely",},
-	{"ip" : "10.10.10.242",	"enable": true , "name" : "Jsguru",},
-	{"ip" : "10.10.10.243",	"enable": true , "name" : "Rupang",},
-	{"ip" : "10.10.10.244",	"enable": true , "name" : "Roger",},
-	{"ip" : "10.10.10.246",	"enable": true , "name" : "Tonya",},
-	{"ip" : "10.10.12.243",	"enable": true , "name" : "Sharon",}
+	{"ip" : "10.10.10.241",	"enable": true, "name" : "Lovely",},
+	{"ip" : "10.10.10.242",	"enable": true, "name" : "Jsguru",},
+	{"ip" : "10.10.10.243",	"enable": true, "name" : "Rupang",},
+	{"ip" : "10.10.10.244",	"enable": true, "name" : "Roger",},
+	{"ip" : "10.10.10.246",	"enable": true, "name" : "Tonya",},
+	{"ip" : "10.10.12.243",	"enable": true, "name" : "Sharon",},
+	{"ip" : "10.10.10.58",	"enable": true, "name" : "Apollo",}
 ]

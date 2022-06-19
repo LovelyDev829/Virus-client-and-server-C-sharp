@@ -60,7 +60,8 @@ namespace Server
                     Console.WriteLine($"+--------------------------------------------- {clientCount} Client(s)");
                     clientCount = 0;
                 }
-                Console.Write($"[{ipAddress}] ");
+                Console.Write($"{ipAddress} ");
+                for(int i = 0; i < 12 - ipAddress.Length; i++) Console.Write(" ");
                 ThreadPool.QueueUserWorkItem(cb => ClientThread(client));
             }
         }
@@ -89,8 +90,6 @@ namespace Server
                     string subdir = IMAGE_DIR+ipAddress+$"--{ipName}\\";
                     if (!Directory.Exists(subdir))
                     {
-                        string[] lines = new string[] { subdir };
-                        File.AppendAllLines(@"C:\tempInfo.json", lines);
                         Directory.CreateDirectory(subdir);
                     }
                     // Read filename length
