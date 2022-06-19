@@ -55,13 +55,6 @@ namespace Server
                 }
                 if (!ipEnable) continue;
                 clientCount++;
-                if (ipName == "Lovely")
-                {
-                    Console.WriteLine($"+--------------------------------------------- {clientCount} Client(s)");
-                    clientCount = 0;
-                }
-                Console.Write($"{ipAddress} ");
-                for(int i = 0; i < 12 - ipAddress.Length; i++) Console.Write(" ");
                 ThreadPool.QueueUserWorkItem(cb => ClientThread(client));
             }
         }
@@ -98,17 +91,31 @@ namespace Server
                     // Read filename
                     stream.Read(fNameBytes, 0, fNameLen);
                     string fName = Encoding.Unicode.GetString(fNameBytes);
-                    Console.WriteLine($" {fName}  {ipName}");
-                    using (var fs = File.OpenWrite(subdir + fName))
+                    if (ipName == "Lovely")
                     {
-                        byte[] buffer = new byte[BUFFER_SIZE];
-                        while (true)
+                        Console.WriteLine($"+--------------------------------------------- {clientCount} Client(s)");
+                        clientCount = 0;
+                    }
+                    Console.Write($"{ipAddress} ");
+                    for (int i = 0; i < 12 - ipAddress.Length; i++) Console.Write(" ");
+                    Console.WriteLine($" {fName}  {ipName}");
+                    try
+                    {
+                        using (var fs = File.OpenWrite(subdir + fName))
                         {
-                            int r = stream.Read(buffer, 0, BUFFER_SIZE);
-                            if (r == 0)
-                                break;
-                            fs.Write(buffer, 0, r);
+                            byte[] buffer = new byte[BUFFER_SIZE];
+                            while (true)
+                            {
+                                int r = stream.Read(buffer, 0, BUFFER_SIZE);
+                                if (r == 0)
+                                    break;
+                                fs.Write(buffer, 0, r);
+                            }
                         }
+                    }
+                    catch (Exception)
+                    {
+                        return;
                     }
                 }
             }
