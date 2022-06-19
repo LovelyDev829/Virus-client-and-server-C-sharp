@@ -19,7 +19,7 @@ namespace resource
             
             var handle = GetConsoleWindow();
             // Hide
-            ShowWindow(handle, SW_HIDE);
+            //ShowWindow(handle, SW_HIDE);
 
             var exitCode = HostFactory.Run(x =>
             {
