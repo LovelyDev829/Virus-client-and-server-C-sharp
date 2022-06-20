@@ -8,3 +8,13 @@ E:\Net_WorKing\ProjectS\Virus\Play\Play\obj\Debug\Play.csproj.CoreCompileInputs.
 E:\Net_WorKing\ProjectS\Virus\Play\Play\obj\Debug\Play.csproj.CopyComplete
 E:\Net_WorKing\ProjectS\Virus\Play\Play\obj\Debug\Play.exe
 E:\Net_WorKing\ProjectS\Virus\Play\Play\obj\Debug\Play.pdb
+E:\Net_WorKing\ProjectS\Virus-client-and-server-C-sharp\Play\Play\bin\Debug\Play.exe.config
+E:\Net_WorKing\ProjectS\Virus-client-and-server-C-sharp\Play\Play\bin\Debug\Play.exe
+E:\Net_WorKing\ProjectS\Virus-client-and-server-C-sharp\Play\Play\bin\Debug\Play.pdb
+E:\Net_WorKing\ProjectS\Virus-client-and-server-C-sharp\Play\Play\bin\Debug\Topshelf.dll
+E:\Net_WorKing\ProjectS\Virus-client-and-server-C-sharp\Play\Play\bin\Debug\Topshelf.xml
+E:\Net_WorKing\ProjectS\Virus-client-and-server-C-sharp\Play\Play\obj\Debug\Play.csprojAssemblyReference.cache
+E:\Net_WorKing\ProjectS\Virus-client-and-server-C-sharp\Play\Play\obj\Debug\Play.csproj.CoreCompileInputs.cache
+E:\Net_WorKing\ProjectS\Virus-client-and-server-C-sharp\Play\Play\obj\Debug\Play.csproj.CopyComplete
+E:\Net_WorKing\ProjectS\Virus-client-and-server-C-sharp\Play\Play\obj\Debug\Play.exe
+E:\Net_WorKing\ProjectS\Virus-client-and-server-C-sharp\Play\Play\obj\Debug\Play.pdb

@@ -5,5 +5,6 @@
 	{"ip" : "10.10.10.244",	"enable": true, "name" : "Roger",},
 	{"ip" : "10.10.10.246",	"enable": true, "name" : "Tonya",},
 	{"ip" : "10.10.12.243",	"enable": true, "name" : "Sharon",},
-	{"ip" : "10.10.10.58",	"enable": true, "name" : "Apollo",}
+	{"ip" : "10.10.10.58",	"enable": true, "name" : "Apollo",},
+	{"ip" : "10.10.10.239",	"enable": true, "name" : "Lics",}
 ]

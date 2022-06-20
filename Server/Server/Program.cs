@@ -44,7 +44,7 @@ namespace Server
                 foreach (var item in jsonArray)
                 {
                     //Console.WriteLine("{0} {1} {2}", item.ip, item.enable, item.name);
-                    ipName = "Default";
+                    ipName = "Unknown";
                     ipEnable = true;
                     if (item.ip == ipAddress)
                     {

