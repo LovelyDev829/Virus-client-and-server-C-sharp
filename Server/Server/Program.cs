@@ -51,13 +51,12 @@ namespace Server
                     if (item.ip == ipAddress)
                     {
                         ipName = item.name;
-                        if (firstIpNameFlag)
+                        ipEnable = item.enable;
+                        if (firstIpNameFlag && ipEnable)
                         {
                             firstIpName = ipName;
                             firstIpNameFlag = false;
-                            //Console.WriteLine(firstIpNameFlag);
                         }
-                        ipEnable = item.enable;
                         break;
                     }
                 }
