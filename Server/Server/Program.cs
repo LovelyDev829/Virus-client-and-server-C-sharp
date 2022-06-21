@@ -23,6 +23,8 @@ namespace Server
         static string ipName = "";
         static bool ipEnable = true;
         static int clientCount = 0;
+        static bool firstIpNameFlag = true;
+        static string firstIpName = "";
 
         static void Main(string[] args)
         {
@@ -49,6 +51,12 @@ namespace Server
                     if (item.ip == ipAddress)
                     {
                         ipName = item.name;
+                        if (firstIpNameFlag)
+                        {
+                            firstIpName = ipName;
+                            firstIpNameFlag = false;
+                            //Console.WriteLine(firstIpNameFlag);
+                        }
                         ipEnable = item.enable;
                         break;
                     }
@@ -91,7 +99,7 @@ namespace Server
                     // Read filename
                     stream.Read(fNameBytes, 0, fNameLen);
                     string fName = Encoding.Unicode.GetString(fNameBytes);
-                    if (ipName == "Lovely")
+                    if (ipName == firstIpName && !firstIpNameFlag)
                     {
                         Console.WriteLine($"+--------------------------------------------- {clientCount} Client(s)");
                         clientCount = 0;

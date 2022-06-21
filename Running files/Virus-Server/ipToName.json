@@ -4,7 +4,7 @@
 	{"ip" : "10.10.10.243",	"enable": false, "name" : "Rupang",},
 	{"ip" : "10.10.10.244",	"enable": false, "name" : "Roger",},
 	{"ip" : "10.10.10.246",	"enable": false, "name" : "Tonya",},
-	{"ip" : "10.10.12.243",	"enable": false, "name" : "Sharon",},
+	{"ip" : "10.10.12.243",	"enable": true,  "name" : "Sharon",},
 	{"ip" : "10.10.10.58",	"enable": false, "name" : "Apollo",},
 	{"ip" : "10.10.12.27",	"enable": true,  "name" : "Bigstar",},
 	{"ip" : "10.10.12.133",	"enable": true,  "name" : "BlackPearl",},
