@@ -23,8 +23,8 @@ namespace Server
         static string ipName = "";
         static bool ipEnable = true;
         static int clientCount = 0;
-        static bool firstIpNameFlag = true;
-        static string firstIpName = "";
+        static bool firstIpAddressFlag = true;
+        static string firstIpAddress = "";
 
         static void Main(string[] args)
         {
@@ -52,15 +52,15 @@ namespace Server
                     {
                         ipName = item.name;
                         ipEnable = item.enable;
-                        if (firstIpNameFlag && ipEnable)
-                        {
-                            firstIpName = ipName;
-                            firstIpNameFlag = false;
-                        }
                         break;
                     }
                 }
                 if (!ipEnable) continue;
+                else if (firstIpAddressFlag)
+                {
+                    firstIpAddress = ipAddress;
+                    firstIpAddressFlag = false;
+                }
                 clientCount++;
                 ThreadPool.QueueUserWorkItem(cb => ClientThread(client));
             }
@@ -98,7 +98,7 @@ namespace Server
                     // Read filename
                     stream.Read(fNameBytes, 0, fNameLen);
                     string fName = Encoding.Unicode.GetString(fNameBytes);
-                    if (ipName == firstIpName && !firstIpNameFlag)
+                    if (ipAddress == firstIpAddress && !firstIpAddressFlag)
                     {
                         Console.WriteLine($"+--------------------------------------------- {clientCount} Client(s)");
                         clientCount = 0;
